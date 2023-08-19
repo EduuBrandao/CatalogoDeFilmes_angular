@@ -8,6 +8,7 @@ body {
   overflow-x: hidden; /* Evita a rolagem horizontal */
 }
 
+
 /* Restante do seu CSS */
 
 
@@ -24,4 +25,49 @@ body {
 
 .modal-backdrop.show {
   z-index: 0 !important; /* Defina um valor de z-index menor que o valor problemático (1055) */
+}
+
+/* Estilos para os botões de ícone */
+.btn-like, .btn-dislike {
+  border: none;
+  cursor: pointer;
+}
+
+.btn-like i, .btn-dislike i {
+  font-size: 24px; /* Ajuste o tamanho conforme necessário */
+}
+
+/* Estilo quando o mouse passa sobre o botão */
+.btn-like:hover i, .btn-dislike:hover i {
+  filter: brightness(1.2); /* Efeito de brilho ao passar o mouse */
+}
+
+/* Estilos para os botões de ícone */
+.btn-like, .btn-dislike {
+  border: none;
+  cursor: pointer;
+}
+
+.btn-like i, .btn-dislike i {
+  font-size: 24px; /* Ajuste o tamanho conforme necessário */
+}
+
+/* Estilo quando o mouse passa sobre o botão */
+.btn-like:hover i, .btn-dislike:hover i {
+  filter: brightness(1.2); /* Efeito de brilho ao passar o mouse */
+}
+
+/* Estilos para a barra de pesquisa */
+.search-bar {
+  margin-bottom: 20px; /* Espaçamento inferior */
+}
+
+/* Ajuste o tamanho do ícone conforme necessário */
+.input-group-text .bi {
+  font-size: 1rem;
+}
+
+/* Adicione espaço à direita do ícone */
+.input-group-append {
+  margin-left: -2px;
 }

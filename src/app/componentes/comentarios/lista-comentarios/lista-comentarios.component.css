@@ -12,6 +12,10 @@
   opacity: 0.5;
 }
 
+.lista-comentarios-component {
+  margin-top: 300px; /* Ou o valor de margem que você preferir */
+}
+
 .poster-img {
   margin-top: 30px;
   border-radius: 10px;

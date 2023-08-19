@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AddressService } from '../address-form/address.service';
+import { ActivatedRoute} from '@angular/router';
 import { Descricao } from '../interfaces/descricao';
 import { DatePipe } from '@angular/common';
+import { FilmeService } from 'src/app/services/filme.service';
 
 @Component({
   selector: 'app-descricaofilme',
@@ -41,23 +41,19 @@ export class DescricaofilmeComponent {
     year: 0
   };
 
-
-
   constructor(
-    private service: AddressService,
-    private router: Router,
+    private service: FilmeService,
     private route: ActivatedRoute,
     private datePipe: DatePipe
   ) {}
 
   ngOnInit(): void {
-    console.log("testeeee")
     const id = this.route.snapshot.paramMap.get('id')
     this.service.buscarDescricaoPorId(parseInt(id!)).subscribe((descricao) => {
       this.descricao = descricao;
       this.descricao.year = new Date(this.descricao.release_date).getFullYear();
-      this.adjustDateToLocalTime(); // Ajusta a data para o fuso horário local
-      this.formatDate(); // Formata a data após receber os dados
+      this.adjustDateToLocalTime();
+      this.formatDate();
     });
   }
 
@@ -78,13 +74,13 @@ export class DescricaofilmeComponent {
     }
   }
 
-  getGenres(genres: any[]): string {
-    return genres.map(genre => genre.name).join(', ');
-  }
-
   convertToHours(minutes: number): string {
     const hours = Math.floor(minutes / 60);
     const remainingMinutes = minutes % 60;
     return `${hours}h ${remainingMinutes}min`;
+  }
+
+  getGeneros(genres: any[]): string {
+    return genres.map(genre => genre.name).join(', ');
   }
 }

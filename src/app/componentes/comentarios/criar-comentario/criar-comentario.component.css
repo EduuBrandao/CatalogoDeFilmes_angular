@@ -24,8 +24,6 @@
 }
 
 .btn-submit {
-  background-color: #e50914;
-  border-color: #e50914;
   padding: 10px 20px;
   border-radius: 5px;
   font-size: 16px;
@@ -34,7 +32,28 @@
   transition: background-color 0.2s ease-in-out;
 }
 
+.btn-success {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
 .btn-submit:hover {
-  background-color: #b2070d;
-  border-color: #b2070d;
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+/* Adicione ao seu arquivo CSS */
+.btn-submit:enabled {
+  background-color: rgb(14, 8, 8);
+  border-color: rgb(14, 8, 8);
+}
+
+.btn-submit:enabled:hover {
+  background-color: rgb(14, 8, 8);
+  border-color: rgb(14, 8, 8);
 }

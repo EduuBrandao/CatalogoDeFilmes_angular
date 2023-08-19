@@ -1,33 +1,41 @@
 import { Component, Input } from '@angular/core';
-import { ComentarioServiceService } from '../comentario-service.service';
 import { Comentario } from '../../interfaces/comentarios';
-import { Router } from '@angular/router';
+import { ComentarioService } from 'src/app/services/comentario.service';
+import { LoadingComponent } from '../../loading/loading.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-criar-comentario',
   templateUrl: './criar-comentario.component.html',
-  styleUrls: ['./criar-comentario.component.css']
+  styleUrls: ['./criar-comentario.component.css'],
 })
-
 export class CriarComentarioComponent {
+
   @Input() filmeId!: number;
   comentario: Comentario = {
     id: 0,
     fk_id: '',
     comentario: '',
-    usuario: ''
-  }
+    usuario: '',
+  };
 
-  constructor(private service: ComentarioServiceService,
-             private router: Router,) {}
+  constructor(
+    private service: ComentarioService,
+    private modalService: NgbModal
+  ) {}
 
   criarComentario() {
-    console.log("Usuario:", this.comentario.usuario);
-  console.log("Comentário:", this.comentario.comentario);
+    const loadingModal = this.modalService.open(LoadingComponent, {
+      backdrop: 'static',
+      keyboard: false,
+    });
 
     this.comentario.fk_id = this.filmeId.toString(); // Atribuir filmeId ao id do comentário
-    this.service.CriarComentario(this.comentario).subscribe(() => {
-      window.location.reload() })
+    this.service.criarComentario(this.comentario).subscribe(() => {
+      setTimeout(() => {
+        loadingModal.close();
+        window.location.reload();
+      }, 800);
+    });
   }
-
 }

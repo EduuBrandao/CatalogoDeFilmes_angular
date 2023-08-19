@@ -50,5 +50,7 @@
   opacity: 0.5; /* Ajuste a opacidade conforme desejado */
 }
 
-
+.lista-comentarios-container {
+  margin-bottom: 300px; /* Ou o valor de margem que você preferir */
+}
 

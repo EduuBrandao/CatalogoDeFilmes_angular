@@ -1,0 +1,28 @@
+/* loading.component.css */
+.modal {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-dialog {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  width: auto;
+}
+
+.modal-content {
+  background-color: transparent;
+  border: none;
+}
+
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+.modal-body {
+  color: white;
+}

@@ -1,111 +1,77 @@
 import { Component, Input } from '@angular/core';
-import { Result } from '../address-form/IListaFilmes';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
-import { FilmeServiceService } from 'src/app/Services/filme-service.service';
+import { FilmeService } from 'src/app/services/filme.service';
+import { Result } from '../interfaces/IListaFilmes';
 
 @Component({
   selector: 'app-filmes',
   templateUrl: './filmes.component.html',
-  styleUrls: ['./filmes.component.css']
+  styleUrls: ['./filmes.component.css'],
 })
 export class FilmesComponent {
 
-
-  selectedPage: number = 1;
-  showFilmInfo: boolean[] = [];
-  cep = '';
-  result: Result[] = [];
+  paginaSelecionada: number = 1;
+  informacoesFilme: boolean[] = [];
+  listaFilmes: Result[] = [];
   tmdbImageUrlBase = 'https://image.tmdb.org/t/p/w500';
-  totalPages: number = 100;
+  totalPaginas: number = 100;
+  pesquisa: string = '';
+  filmesFiltrados: Result[] = [];
 
-  constructor( private filmeService: FilmeServiceService,
-              private router: Router,
-              private route: ActivatedRoute,
-              private dialog: MatDialog) {}
-
+  constructor(
+    private filmeService: FilmeService,
+  ) {}
 
   ngOnInit(): void {
-    this.updateFilmsList(this.selectedPage);
+    this.atualizarListadeFilmes(this.paginaSelecionada);
   }
 
-  decreasePage() {
-    if (this.selectedPage > 1) {
-      this.selectedPage--;
-      this.atualizarListaFilmes();
+  pesquisarFilmes() {
+    this.filmesFiltrados = this.listaFilmes.filter((filme) =>
+      filme.title.toLowerCase().includes(this.pesquisa.toLowerCase())
+    );
+  }
+
+  diminuirNumeroPaginas() {
+    if (this.paginaSelecionada > 1) {
+      this.paginaSelecionada--;
+      this.atualizarPaginaSelecionada();
     }
   }
 
-  increasePage() {
-    if (this.selectedPage < this.totalPages) {
-      this.selectedPage++;
-      this.atualizarListaFilmes();
+  clicarNumeroPaginas(pageNumber: number) {
+    this.paginaSelecionada = pageNumber;
+    this.atualizarPaginaSelecionada();
+  }
+
+  aumentarNumerodePaginas() {
+    if (this.paginaSelecionada < 100) {
+      this.paginaSelecionada++;
+      this.atualizarPaginaSelecionada();
     }
   }
 
-  generatePageArray(): number[] {
-    const pageArray = [];
-    for (let i = 1; i <= this.totalPages; i++) {
-      pageArray.push(i);
-    }
-    return pageArray;
+  gerarIntervaloPaginas(): number[] {
+    const middlePage = Math.min(this.paginaSelecionada, this.totalPaginas - 5);
+    const startPage = Math.max(1, middlePage - 4);
+    const endPage = Math.min(startPage + 9, this.totalPaginas);
+
+    return Array.from(
+      { length: endPage - startPage + 1 },
+      (_, i) => startPage + i
+    );
   }
 
-  navigatePage(direction: 'prev' | 'next'): void {
-    if (direction === 'prev' && this.selectedPage > 1) {
-      this.selectedPage--;
-    } else if (direction === 'next' && this.selectedPage < this.totalPages) {
-      this.selectedPage++;
-    }
-  }
-
-  getPageNumbers(): number[] {
-    const pageNumbers = [];
-    for (let i = 1; i <= this.totalPages; i++) {
-      pageNumbers.push(i);
-    }
-    return pageNumbers;
-  }
-
-  getLastPage(): number {
-    return this.totalPages;
-  }
-
-  showInfo(index: number): void {
-    this.showFilmInfo[index] = true;
-  }
-
-  // Método para esconder as informações quando o mouse sair da imagem
-  hideInfo(index: number): void {
-    this.showFilmInfo[index] = false;
-  }
-
-  updateFilmsList(page: number) {
+  atualizarListadeFilmes(page: number) {
     this.filmeService.getFilmes(page).subscribe((result) => {
       console.log(result);
-      this.result = result;
+      this.listaFilmes = result;
+      this.filmesFiltrados = result;
     });
   }
-  updatePage(increase: boolean) {
-    if (increase) {
-      this.selectedPage++;
-    } else {
-      this.selectedPage--;
+
+  atualizarPaginaSelecionada() {
+    if (this.paginaSelecionada >= 1 && this.paginaSelecionada <= 100) {
+      this.atualizarListadeFilmes(this.paginaSelecionada);
     }
   }
-
-  atualizarListaFilmes() {
-    if (this.selectedPage >= 1 && this.selectedPage <= 100) {
-      this.updateFilmsList(this.selectedPage);
-    } else {
-      console.log('Valor inválido da página.');
-      // Adicione algum feedback para o usuário aqui, se desejar
-    }
-  }
-
-  descricao(id: number) {
-    this.router.navigate([`/descricao/${id}`])
-  }
-
 }
-

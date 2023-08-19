@@ -1,4 +1,4 @@
-export interface Root {
+export interface ListaFilmes {
   page: number
   results: Result[]
   total_pages: number

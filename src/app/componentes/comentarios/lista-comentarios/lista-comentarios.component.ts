@@ -1,13 +1,13 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { Comentario } from '../../interfaces/comentarios';
-import { ComentarioServiceService } from '../comentario-service.service';
-import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ComentarioService } from 'src/app/services/comentario.service';
+import { LoadingComponent } from '../../loading/loading.component';
 
 @Component({
   selector: 'app-lista-comentarios',
   templateUrl: './lista-comentarios.component.html',
-  styleUrls: ['./lista-comentarios.component.css']
+  styleUrls: ['./lista-comentarios.component.css'],
 })
 export class ListaComentariosComponent {
   @Input() filmeId!: number;
@@ -17,31 +17,55 @@ export class ListaComentariosComponent {
   comentario: Comentario[] = [];
   commentParaEditar: any;
   comentarioParaExcluir: any;
-  constructor(private service: ComentarioServiceService,
-              private router: Router,
-              private modalService: NgbModal) {}
+  constructor(
+    private service: ComentarioService,
+    private modalService: NgbModal
+  ) {}
 
   ngOnInit(): void {
-    this.service.ListaComentarios().subscribe((comentarios) => {
-      this.comentario = comentarios.filter(comentario => comentario.fk_id.toString() === this.filmeId.toString());
+    this.service.listarComentarios().subscribe((comentarios) => {
+      this.comentario = comentarios.filter(
+        (comentario) => comentario.fk_id.toString() === this.filmeId.toString()
+      );
+    });
+  }
+
+  salvarEdicao() {
+    const loadingModal = this.modalService.open(LoadingComponent, {
+      backdrop: 'static',
+      keyboard: false,
+    });
+    this.service.editarComentario(this.commentParaEditar).subscribe(() => {
+      setTimeout(() => {
+        loadingModal.close();
+        window.location.reload();
+      }, 800);
+    });
+  }
+
+  excluirComentario(comentarioId: number, fk_id: string) {
+    const loadingModal = this.modalService.open(LoadingComponent, {
+      backdrop: 'static',
+      keyboard: false,
+    });
+
+    console.log(comentarioId);
+    this.service.excluirComentario(comentarioId).subscribe(() => {
+      setTimeout(() => {
+        loadingModal.close();
+        window.location.reload();
+      }, 800);
     });
   }
 
   abrirModalEditar(commentId: number) {
-    // Encontre o comentário que está sendo editado com base no ID
-    this.commentParaEditar = this.comentario.find(comment => comment.id === commentId);
-
-    // Abra o modal de edição
+    this.commentParaEditar = this.comentario.find(
+      (comment) => comment.id === commentId
+    );
     this.modalService.open(this.modalEdicao, { centered: true });
   }
 
-  salvarEdicao() {
-    // Implemente a lógica para salvar as alterações do comentário
-    // Por exemplo, atualizar o comentário no servidor ou na lista de comentários
-  }
-
-  abrirModalExclusao(content: any, comentario : Comentario) {
-    // Define o backdrop personalizado quando o modal é aberto
+  abrirModalExclusao(content: any, comentario: Comentario) {
     const modalRef = this.modalService.open(content, { centered: true });
     const backdrop = document.querySelector('.modal-backdrop');
     if (backdrop) {
@@ -51,22 +75,12 @@ export class ListaComentariosComponent {
     this.comentarioParaExcluir = comentario;
   }
 
-
-  toggleComments() {
-    this.comentariosVisiveis = !this.comentariosVisiveis;
-  }
-
   carregarMaisComentarios() {
     this.comentariosExibidos += 5;
   }
 
-  editarComentario(comentarioId: number){
-
+  visualizarComentarios() {
+    this.comentariosVisiveis = !this.comentariosVisiveis;
   }
-  excluirComentario(comentarioId: number,fk_id: string) {
-    console.log(comentarioId)
-      this.service.ExcluirComentario(comentarioId).subscribe(() => {
-        window.location.reload()
-      })
-}
+
 }

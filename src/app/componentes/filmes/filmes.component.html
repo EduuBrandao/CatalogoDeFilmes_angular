@@ -1,30 +1,89 @@
+
 <div class="container mt-5">
-  <h1 class="text-center mb-4">Lista de Filmes</h1>
-  <div class="row">
-    <ng-container *ngFor="let chunk of result | chunk: 5">
+  <div class="search-bar">
+    <div class="input-group">
+      <input
+        type="text"
+        [(ngModel)]="pesquisa"
+        (input)="pesquisarFilmes()"
+        class="form-control"
+        placeholder="Pesquisar filmes"
+      />
+      <div class="input-group-append">
+        <span class="input-group-text"><i class="bi bi-search"></i></span>
+      </div>
+    </div>
+  </div>
+  <h1 class="text-left mb-4">Lista de Filmes</h1>
+  <div class="row film-container">
+    <ng-container *ngFor="let chunk of filmesFiltrados | chunk : 5">
       <div class="col-md-3 mb-4" *ngFor="let filme of chunk">
         <div class="card h-100 border-0">
           <a [routerLink]="['/descricao', filme.id]">
             <div
               class="film-card"
-              [style.background-image]="'url(' + (tmdbImageUrlBase + filme.poster_path) + ')'"
-              (mouseenter)="showFilmInfo[filme.id] = true"
-              (mouseleave)="showFilmInfo[filme.id] = false"
-            ></div>
+              [style.background-image]="
+                'url(' + (tmdbImageUrlBase + filme.poster_path) + ')'
+              "
+            >
+              <div class="film-info">
+                <h5 class="card-title">{{ filme.title }}</h5>
+                <p class="card-text">
+                  Data de Lançamento: {{ filme.release_date }}
+                </p>
+                <div class="d-flex justify-content-between">
+                  <button class="btn btn-outline-primary btn-like">
+                    <i class="bi bi-heart"></i>
+                  </button>
+                  <button class="btn btn-outline-danger btn-dislike">
+                    <i class="bi bi-x-circle"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
           </a>
-          <div class="card-body text-center">
-            <h5 class="card-title" *ngIf="showFilmInfo[filme.id]">{{ filme.title }}</h5>
-            <p class="card-text" *ngIf="showFilmInfo[filme.id]">Data de Lançamento: {{ filme.release_date }}</p>
-          </div>
         </div>
       </div>
     </ng-container>
   </div>
-
   <div class="text-center my-4">
     <div class="d-flex align-items-center justify-content-center">
-      <span class="carousel-arrows" (click)="decreasePage()">&lt;</span>
-      <span class="carousel-number">{{ selectedPage }}</span>
-      <span class="carousel-arrows" (click)="increasePage()">&gt;</span>
+      <nav aria-label="...">
+        <ul class="pagination">
+          <li class="page-item">
+            <button
+              class="page-link-botoes prev-next"
+              tabindex="-1"
+              aria-disabled="true"
+              [class.disabled]="paginaSelecionada === 1"
+              (click)="diminuirNumeroPaginas()"
+            >
+              Previous
+            </button>
+          </li>
+          <li
+            class="page-item"
+            *ngFor="let item of gerarIntervaloPaginas(); let i = index"
+          >
+            <button
+              class="page-link"
+              [class.active]="paginaSelecionada === item"
+              (click)="clicarNumeroPaginas(item)"
+            >
+              {{ item }}
+            </button>
+          </li>
+          <li class="page-item">
+            <button
+              class="page-link-botoes prev-next"
+              [class.disabled]="paginaSelecionada === 100"
+              (click)="aumentarNumerodePaginas()"
+            >
+              Next
+            </button>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
+</div>
