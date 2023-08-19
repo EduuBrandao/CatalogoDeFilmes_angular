@@ -12,6 +12,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class ListaComentariosComponent {
   @Input() filmeId!: number;
   @ViewChild('modalEdicao') modalEdicao: any;
+  comentariosVisiveis = false;
+  comentariosExibidos = 5;
   comentario: Comentario[] = [];
   commentParaEditar: any;
   comentarioParaExcluir: any;
@@ -49,8 +51,6 @@ export class ListaComentariosComponent {
     this.comentarioParaExcluir = comentario;
   }
 
-  comentariosVisiveis = false;
-  comentariosExibidos = 5;
 
   toggleComments() {
     this.comentariosVisiveis = !this.comentariosVisiveis;

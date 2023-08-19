@@ -45,8 +45,7 @@ import { RouterModule } from '@angular/router';
     CarouselModule.forRoot(),
     MatDialogModule,
     NgbModule,
-    RouterModule
-
+    RouterModule,
   ],
   providers: [DatePipe, AddressService],
   bootstrap: [AppComponent]

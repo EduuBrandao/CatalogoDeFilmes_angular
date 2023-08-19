@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DescricaofilmeComponent } from './componentes/descricaofilme/descricaofilme.component';
 import { FilmesComponent } from './componentes/filmes/filmes.component';
-import { ExcluirComentariosComponent } from './componentes/comentarios/excluir-comentarios/excluir-comentarios.component';
 
 const routes: Routes = [
   {
@@ -17,10 +16,6 @@ const routes: Routes = [
   {
     path: 'descricao/:id',
     component: DescricaofilmeComponent
-  },
-  {
-    path: 'excluir/:id/:fk_id',
-    component: ExcluirComentariosComponent
   }
 ];
 
