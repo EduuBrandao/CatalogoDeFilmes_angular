@@ -1,0 +1,13 @@
+<div class="film-comments-container" *ngIf="comentario.length > 0">
+  <h2 class="comment-title">Comentários dos Espectadores</h2>
+  <div class="row">
+    <div class="col-md-12" *ngFor="let comentario of comentario">
+      <div class="card comment-card" *ngIf="comentario.comentario.trim() !== ''">
+        <div class="card-body">
+          <h5 class="comment-username">{{ comentario.usuario }}</h5>
+          <p class="card-text comment-text">{{ comentario.comentario }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

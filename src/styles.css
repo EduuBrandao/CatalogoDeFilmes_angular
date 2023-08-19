@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+/* Defina um estilo para fazer o corpo ocupar 100% da altura da viewport */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden; /* Evita a rolagem horizontal */
+}
+
+/* Restante do seu CSS */
+
+
+.main-content {
+  flex: 1;
+  padding: 20px; /* Adicione padding para espaçamento interno */
+}
+/* Estilo para o rodapé */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+}

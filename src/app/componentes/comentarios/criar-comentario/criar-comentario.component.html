@@ -1,0 +1,31 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="mb-3 form-title">Deixe seu Comentário</h3>
+      <form class="comment-form">
+        <div class="mb-3">
+          <label for="nome" class="form-label">Seu Nome</label>
+          <input
+            type="text"
+            class="form-control input-field"
+            id="usuario"
+            name="usuario"
+            placeholder="Digite o seu nome"
+            [(ngModel)]="comentario.usuario">
+        </div>
+        <div class="mb-3">
+          <label for="comentario" class="form-label">Comentário</label>
+          <textarea
+            class="form-control input-field"
+            id="comentario"
+            name="comentario"
+            rows="3"
+            placeholder="Digite o comentário"
+            [(ngModel)]="comentario.comentario"></textarea>
+        </div>
+        <input type="hidden" name="id" [value]="filmeId">
+        <button type="button" class="btn btn-primary btn-submit" (click)="criarComentario()">Enviar Comentário</button>
+      </form>
+    </div>
+  </div>
+</div>
