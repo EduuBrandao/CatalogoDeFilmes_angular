@@ -22,4 +22,15 @@ export class ComentarioServiceService {
     return this.http.get<Comentario[]>(this.API)
   }
 
+  ExcluirComentario(id: number): Observable<Comentario> {
+    console.log("caiu aqui no excluir comentario service")
+    const url = `${this.API}/${id}`
+    return this.http.delete<Comentario>(url)
+  }
+
+  buscarComentarioPorId(id: number): Observable<Comentario> {
+    const url = `${this.API}/${id}`
+    return this.http.get<Comentario>(url)
+  }
+
 }

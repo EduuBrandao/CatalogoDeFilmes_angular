@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
-import { AddressService } from './address.service';
+
 import { Address } from './address-interface';
 import { Pessoa } from './pessoa-interface';
 import { Result } from './IListaFilmes';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { FilmDetailsDialogComponent } from '../film-details-dialog/film-details-dialog.component';
+import { Component, Inject } from '@angular/core';
+import { AddressService } from './address.service';
 
 @Component({
   selector: 'app-address-form',
@@ -24,8 +25,8 @@ export class AddressFormComponent {
   tmdbImageUrlBase = 'https://image.tmdb.org/t/p/w500';
   totalPages: number = 10;
 
-  constructor(private addressService: AddressService,
-              private router: Router,
+  constructor( @Inject(AddressService) private addressService: AddressService,
+              @Inject(Router) private router: Router,
               private route: ActivatedRoute,
               private dialog: MatDialog) {}
 

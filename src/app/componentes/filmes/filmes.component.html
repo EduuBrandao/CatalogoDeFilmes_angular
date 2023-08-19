@@ -1,4 +1,30 @@
-<td>{{ result.original_title}}</td>
-<td>{{ result.overview }}</td>
-<td>{{ result.popularity }}</td>
-<td>{{ result.poster_path }}</td>
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Lista de Filmes</h1>
+  <div class="row">
+    <ng-container *ngFor="let chunk of result | chunk: 5">
+      <div class="col-md-3 mb-4" *ngFor="let filme of chunk">
+        <div class="card h-100 border-0">
+          <a [routerLink]="['/descricao', filme.id]">
+            <div
+              class="film-card"
+              [style.background-image]="'url(' + (tmdbImageUrlBase + filme.poster_path) + ')'"
+              (mouseenter)="showFilmInfo[filme.id] = true"
+              (mouseleave)="showFilmInfo[filme.id] = false"
+            ></div>
+          </a>
+          <div class="card-body text-center">
+            <h5 class="card-title" *ngIf="showFilmInfo[filme.id]">{{ filme.title }}</h5>
+            <p class="card-text" *ngIf="showFilmInfo[filme.id]">Data de Lançamento: {{ filme.release_date }}</p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="text-center my-4">
+    <div class="d-flex align-items-center justify-content-center">
+      <span class="carousel-arrows" (click)="decreasePage()">&lt;</span>
+      <span class="carousel-number">{{ selectedPage }}</span>
+      <span class="carousel-arrows" (click)="increasePage()">&gt;</span>
+    </div>
+  </div>

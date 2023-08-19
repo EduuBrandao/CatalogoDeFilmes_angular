@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AddressService } from '../address-form/address.service';
 import { Descricao } from '../interfaces/descricao';
@@ -48,7 +47,6 @@ export class DescricaofilmeComponent {
     private service: AddressService,
     private router: Router,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
     private datePipe: DatePipe
   ) {}
 

@@ -21,3 +21,7 @@ body {
   color: #fff;
   padding: 20px 0;
 }
+
+.modal-backdrop.show {
+  z-index: 0 !important; /* Defina um valor de z-index menor que o valor problemático (1055) */
+}

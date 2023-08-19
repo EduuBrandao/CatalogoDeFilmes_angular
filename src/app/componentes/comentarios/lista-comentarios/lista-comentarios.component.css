@@ -18,6 +18,10 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
+.w-25 {
+  width: 10%!important;
+}
+
 .film-title {
   font-size: 28px;
   margin-top: 10px;
@@ -70,4 +74,8 @@
 .comment-text {
   font-size: 16px;
   color: #666;
+}
+
+.modal-backdrop-custom-zindex {
+  z-index: 0; /* Defina um valor de z-index menor que o valor problemático (1055) */
 }
