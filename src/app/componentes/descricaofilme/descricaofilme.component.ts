@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Descricao } from '../interfaces/descricao';
 import { DatePipe } from '@angular/common';
-import { FilmeService } from 'src/app/services/filme.service';
+import { TMDBService } from 'src/app/services/tmdb.service';
 
 @Component({
   selector: 'app-descricaofilme',
@@ -42,14 +42,14 @@ export class DescricaofilmeComponent {
   };
 
   constructor(
-    private service: FilmeService,
+    private tmdbService: TMDBService,
     private route: ActivatedRoute,
     private datePipe: DatePipe
   ) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.service.buscarDescricaoPorId(parseInt(id!)).subscribe((descricao) => {
+    this.tmdbService.buscarDescricaoPorId(parseInt(id!)).subscribe((descricao) => {
       this.descricao = descricao;
       this.descricao.year = new Date(this.descricao.release_date).getFullYear();
       this.ajusteDataParaLocal();

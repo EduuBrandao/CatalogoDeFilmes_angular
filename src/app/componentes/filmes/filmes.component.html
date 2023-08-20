@@ -19,29 +19,20 @@
     <ng-container *ngFor="let chunk of filmesFiltrados | chunk : 5">
       <div class="col-md-3 mb-4" *ngFor="let filme of chunk">
         <div class="card h-100 border-0">
-          <a [routerLink]="['/descricao', filme.id]">
-            <div
-              class="film-card"
-              [style.background-image]="
-                'url(' + (tmdbImageUrlBase + filme.poster_path) + ')'
-              "
-            >
+            <div class="film-card" [routerLink]="['/descricao', filme.id]" [style.background-image]="'url(' + (tmdbImageUrlBase + filme.poster_path) + ')'">
               <div class="film-info">
                 <h5 class="card-title">{{ filme.title }}</h5>
-                <p class="card-text">
-                  Data de Lançamento: {{ filme.release_date }}
-                </p>
+                <p class="card-text">Data de Lançamento: {{ filme.release_date }}</p>
                 <div class="d-flex justify-content-between">
-                  <button class="btn btn-outline-primary btn-like">
-                    <i class="bi bi-hand-thumbs-up"></i>
+                  <button class="btn btn-outline-primary btn-like" (click)="toggleLike($event, filme.id)">
+                    <i class="bi bi-hand-thumbs-up" [ngClass]="{'active': likeDislikeService.getLikeActive(filme.id)}"></i>
                   </button>
-                  <button class="btn btn-outline-danger btn-dislike">
-                    <i class="bi bi-hand-thumbs-down"></i>
+                  <button class="btn btn-outline-danger btn-dislike" (click)="toggleDislike($event, filme.id)">
+                    <i class="bi bi-hand-thumbs-down" [ngClass]="{'active': likeDislikeService.getDislikeActive(filme.id)}"></i>
                   </button>
                 </div>
               </div>
             </div>
-          </a>
         </div>
       </div>
     </ng-container>

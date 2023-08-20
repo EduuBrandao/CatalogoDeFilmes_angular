@@ -1,0 +1,12 @@
+<div class="espacamento">
+<h1 class="elenco-title">Elenco principal</h1>
+<ol class="people scroller">
+  <div class="elenco-list">
+    <li class="card" *ngFor="let member of elenco.cast">
+      <img loading="lazy" class="profile" [src]="pegarImagemDePerfil(member)" [alt]="member.name">
+      <p>{{ member.name }}</p>
+      <p class="character">{{ limitarCaracterDosNomes(member.character, 30) }}</p>
+    </li>
+  </div>
+</ol>
+</div>

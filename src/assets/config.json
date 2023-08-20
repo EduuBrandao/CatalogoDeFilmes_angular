@@ -1,4 +1,6 @@
 {
   "apiKey": "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNTYyYWU5MzM1NDI5ZmFkOTVjN2M3NmVmYWY3NzhiMSIsInN1YiI6IjY0ZGZkZDJkNWFiODFhMDBmZmMxZTVhNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5Wa2LAHELdxIl8LKVoorNKse8HeBahcb9wI6iu9LAMA",
-  "apiFilmes": "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=${page}&sort_by=popularity.desc"
+  "apiFilmes": "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=${page}&sort_by=popularity.desc",
+  "apiDescricao": "https://api.themoviedb.org/3/movie/${id}?language=pt-BR",
+  "apiElenco": "https://api.themoviedb.org/3/movie/${id}/credits?language=pt_BR"
 }

@@ -18,6 +18,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { LoadingComponent } from './componentes/loading/loading.component';
+import { ElencoComponent } from './componentes/elenco/elenco.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LoadingComponent } from './componentes/loading/loading.component';
     ChunkPipe,
     ListaComentariosComponent,
     CriarComentarioComponent,
-    LoadingComponent
+    LoadingComponent,
+    ElencoComponent
   ],
   imports: [
     BrowserModule,

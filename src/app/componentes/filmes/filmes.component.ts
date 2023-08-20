@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
-import { FilmeService } from 'src/app/services/filme.service';
 import { Result } from '../interfaces/IListaFilmes';
+import { TMDBService } from 'src/app/services/tmdb.service';
+import { LikeDislikeService } from 'src/app/services/Like/LikeDislike.service';
 
 @Component({
   selector: 'app-filmes',
@@ -9,6 +10,8 @@ import { Result } from '../interfaces/IListaFilmes';
 })
 export class FilmesComponent {
 
+  likeActive: boolean = false;
+  dislikeActive: boolean = false;
   paginaSelecionada: number = 1;
   informacoesFilme: boolean[] = [];
   listaFilmes: Result[] = [];
@@ -18,7 +21,8 @@ export class FilmesComponent {
   filmesFiltrados: Result[] = [];
 
   constructor(
-    private filmeService: FilmeService,
+    private tmdbService: TMDBService,
+    public likeDislikeService: LikeDislikeService
   ) {}
 
   ngOnInit(): void {
@@ -62,7 +66,7 @@ export class FilmesComponent {
   }
 
   atualizarListadeFilmes(page: number) {
-    this.filmeService.buscarFilmes(page).subscribe((result) => {
+    this.tmdbService.buscarFilmes(page).subscribe((result) => {
       this.listaFilmes = result;
       this.filmesFiltrados = result;
     });
@@ -72,5 +76,17 @@ export class FilmesComponent {
     if (this.paginaSelecionada >= 1 && this.paginaSelecionada <= 100) {
       this.atualizarListadeFilmes(this.paginaSelecionada);
     }
+  }
+
+  toggleLike(event: Event, filmId: number) {
+    event.stopPropagation();
+    const currentLikeActive = this.likeDislikeService.getLikeActive(filmId);
+    this.likeDislikeService.setLikeActive(filmId, !currentLikeActive);
+  }
+
+  toggleDislike(event: Event, filmId: number) {
+    event.stopPropagation();
+    const currentDislikeActive = this.likeDislikeService.getDislikeActive(filmId);
+    this.likeDislikeService.setDislikeActive(filmId, !currentDislikeActive);
   }
 }

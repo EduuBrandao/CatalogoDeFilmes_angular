@@ -1,20 +1,15 @@
-/* Defina um estilo para fazer o corpo ocupar 100% da altura da viewport */
 body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden; /* Evita a rolagem horizontal */
+  overflow-x: hidden;
 }
-
-
-/* Restante do seu CSS */
-
 
 .main-content {
   flex: 1;
-  padding: 20px; /* Adicione padding para espaçamento interno */
+  padding: 20px;
 }
 /* Estilo para o rodapé */
 .footer {
@@ -24,7 +19,7 @@ body {
 }
 
 .modal-backdrop.show {
-  z-index: 0 !important; /* Defina um valor de z-index menor que o valor problemático (1055) */
+  z-index: 0 !important;
 }
 
 /* Estilos para os botões de ícone */
@@ -34,40 +29,42 @@ body {
 }
 
 .btn-like i, .btn-dislike i {
-  font-size: 24px; /* Ajuste o tamanho conforme necessário */
+  font-size: 24px;
 }
 
-/* Estilo quando o mouse passa sobre o botão */
 .btn-like:hover i, .btn-dislike:hover i {
-  filter: brightness(1.2); /* Efeito de brilho ao passar o mouse */
+  filter: brightness(1.2);
 }
 
-/* Estilos para os botões de ícone */
 .btn-like, .btn-dislike {
   border: none;
   cursor: pointer;
 }
 
 .btn-like i, .btn-dislike i {
-  font-size: 24px; /* Ajuste o tamanho conforme necessário */
+  font-size: 24px;
 }
 
-/* Estilo quando o mouse passa sobre o botão */
 .btn-like:hover i, .btn-dislike:hover i {
-  filter: brightness(1.2); /* Efeito de brilho ao passar o mouse */
+  filter: brightness(1.2);
 }
 
-/* Estilos para a barra de pesquisa */
 .search-bar {
-  margin-bottom: 20px; /* Espaçamento inferior */
+  margin-bottom: 20px;
 }
 
-/* Ajuste o tamanho do ícone conforme necessário */
+
 .input-group-text .bi {
   font-size: 1rem;
 }
 
-/* Adicione espaço à direita do ícone */
 .input-group-append {
   margin-left: -2px;
+}
+
+.btn-like i.active {
+  color: green;
+}
+.btn-dislike i.active {
+  color: rgb(0, 38, 255);
 }
