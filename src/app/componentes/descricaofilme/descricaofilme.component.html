@@ -17,13 +17,13 @@
         <p class="mb-1">
           <strong>Data de Lançamento:</strong> {{ descricao.release_date }}
         </p>
-        <p><strong>Gêneros:</strong> {{ getGeneros(descricao.genres) }}</p>
-        <p><strong>Duração:</strong> {{ convertToHours(descricao.runtime) }}</p>
+        <p><strong>Gêneros:</strong> {{ buscarGeneros(descricao.genres) }}</p>
+        <p><strong>Duração:</strong> {{ converterHoras(descricao.runtime) }}</p>
       </div>
     </div>
   </div>
 </section>
 <app-criar-comentario [filmeId]="descricao.id"></app-criar-comentario>
-<div style="margin-top: 57px">
+<div class="lista-comentarios-container">
   <app-lista-comentarios [filmeId]="descricao.id"></app-lista-comentarios>
 </div>

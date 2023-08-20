@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component} from '@angular/core';
 import { FilmeService } from 'src/app/services/filme.service';
 import { Result } from '../interfaces/IListaFilmes';
 
@@ -62,8 +62,7 @@ export class FilmesComponent {
   }
 
   atualizarListadeFilmes(page: number) {
-    this.filmeService.getFilmes(page).subscribe((result) => {
-      console.log(result);
+    this.filmeService.buscarFilmes(page).subscribe((result) => {
       this.listaFilmes = result;
       this.filmesFiltrados = result;
     });

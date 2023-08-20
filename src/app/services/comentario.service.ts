@@ -19,13 +19,11 @@ export class ComentarioService {
   }
 
   excluirComentario(id: number): Observable<Comentario> {
-    console.log('caiu aqui no excluir comentario service');
     const url = `${this.API_URL}/${id}`;
     return this.http.delete<Comentario>(url);
   }
 
   editarComentario(comentario: Comentario): Observable<Comentario> {
-    console.log('caiu aqui no editar comentario service', comentario);
     const url = `${this.API_URL}/${comentario.id}`;
     return this.http.put<Comentario>(url, comentario);
   }

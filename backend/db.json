@@ -1,12 +1,6 @@
 {
   "comentarios": [
     {
-      "id": 6,
-      "fk_id": "569094",
-      "comentario": "Filme do Homem Aranha muito bom",
-      "usuario": "Edu"
-    },
-    {
       "id": 8,
       "fk_id": "569094",
       "comentario": "ilme do aranhaaa",
@@ -53,6 +47,18 @@
       "fk_id": "976573",
       "comentario": "teste",
       "usuario": "teste"
+    },
+    {
+      "id": 17,
+      "fk_id": "976573",
+      "comentario": "aaaaaaa",
+      "usuario": "aaaaa"
+    },
+    {
+      "id": 18,
+      "fk_id": "569094",
+      "comentario": "filme bom",
+      "usuario": "Edu"
     }
   ]
 }

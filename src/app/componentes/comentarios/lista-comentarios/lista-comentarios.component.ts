@@ -48,8 +48,6 @@ export class ListaComentariosComponent {
       backdrop: 'static',
       keyboard: false,
     });
-
-    console.log(comentarioId);
     this.service.excluirComentario(comentarioId).subscribe(() => {
       setTimeout(() => {
         loadingModal.close();
