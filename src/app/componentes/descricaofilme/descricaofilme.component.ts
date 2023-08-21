@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { TMDBService } from 'src/app/services/TMDB/tmdb.service';
 import { Descricao } from 'src/app/interfaces/IDescricao';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { LoadingComponent } from '../loading/loading.component';
 
 @Component({
   selector: 'app-descricaofilme',
@@ -44,16 +46,25 @@ export class DescricaofilmeComponent {
   constructor(
     private tmdbService: TMDBService,
     private route: ActivatedRoute,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
+    const loadingModal = this.modalService.open(LoadingComponent, {
+      backdrop: 'static',
+      keyboard: false,
+    });
+
     const id = this.route.snapshot.paramMap.get('id');
     this.tmdbService.buscarDescricaoPorId(parseInt(id!)).subscribe((descricao) => {
       this.descricao = descricao;
       this.descricao.year = new Date(this.descricao.release_date).getFullYear();
       this.ajusteDataParaLocal();
       this.formatarData();
+      setTimeout(() => {
+        loadingModal.close();
+      }, 400);
     });
   }
 
