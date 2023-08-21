@@ -21,6 +21,7 @@ import { LoadingComponent } from './componentes/loading/loading.component';
 import { ElencoComponent } from './componentes/elenco/elenco.component';
 import { TMDBService } from './services/TMDB/tmdb.service';
 import { ComentarioService } from './services/comentario/comentario.service';
+import { LikeDislikeService } from './services/like/LikeDislike.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { ComentarioService } from './services/comentario/comentario.service';
     NgbModule,
     RouterModule,
   ],
-  providers: [DatePipe, TMDBService, ComentarioService],
+  providers: [DatePipe, TMDBService, ComentarioService, LikeDislikeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
