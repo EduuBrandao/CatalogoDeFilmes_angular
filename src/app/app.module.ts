@@ -19,6 +19,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { LoadingComponent } from './componentes/loading/loading.component';
 import { ElencoComponent } from './componentes/elenco/elenco.component';
+import { TMDBService } from './services/TMDB/tmdb.service';
+import { ComentarioService } from './services/comentario/comentario.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,7 @@ import { ElencoComponent } from './componentes/elenco/elenco.component';
     NgbModule,
     RouterModule,
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, TMDBService, ComentarioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

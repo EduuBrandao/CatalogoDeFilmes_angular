@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Cast, Elenco } from '../interfaces/IElenco';
-import { TMDBService } from 'src/app/services/tmdb.service';
+import { Cast, Elenco } from '../../interfaces/IElenco';
+import { TMDBService } from 'src/app/services/TMDB/tmdb.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

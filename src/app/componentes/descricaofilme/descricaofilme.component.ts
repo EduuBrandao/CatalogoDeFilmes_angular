@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Descricao } from '../interfaces/descricao';
 import { DatePipe } from '@angular/common';
-import { TMDBService } from 'src/app/services/tmdb.service';
+import { TMDBService } from 'src/app/services/TMDB/tmdb.service';
+import { Descricao } from 'src/app/interfaces/IDescricao';
 
 @Component({
   selector: 'app-descricaofilme',
@@ -85,4 +85,10 @@ export class DescricaofilmeComponent {
   buscarGeneros(genres: any[]): string {
     return genres.map((genre) => genre.name).join(', ');
   }
+
+  formatarPorcentagem(porcentagem: number): string {
+    const porcentagemArredondada = Math.round(porcentagem * 10);
+    return `${porcentagemArredondada}%`;
+  }
+
 }

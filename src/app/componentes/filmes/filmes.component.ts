@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
-import { Result } from '../interfaces/IListaFilmes';
-import { TMDBService } from 'src/app/services/tmdb.service';
-import { LikeDislikeService } from 'src/app/services/Like/LikeDislike.service';
+import { Result } from '../../interfaces/IListaFilmes';
+import { TMDBService } from 'src/app/services/TMDB/tmdb.service';
+import { LikeDislikeService } from 'src/app/services/like/LikeDislike.service';
 
 @Component({
   selector: 'app-filmes',
@@ -56,8 +56,8 @@ export class FilmesComponent {
 
   gerarIntervaloPaginas(): number[] {
     const middlePage = Math.min(this.paginaSelecionada, this.totalPaginas - 5);
-    const startPage = Math.max(1, middlePage - 4);
-    const endPage = Math.min(startPage + 9, this.totalPaginas);
+    const startPage = Math.max(1, middlePage);
+    const endPage = Math.min(startPage + 4, this.totalPaginas);
 
     return Array.from(
       { length: endPage - startPage + 1 },
@@ -78,15 +78,33 @@ export class FilmesComponent {
     }
   }
 
-  toggleLike(event: Event, filmId: number) {
+  botaoLike(event: Event, filmId: number) {
     event.stopPropagation();
-    const currentLikeActive = this.likeDislikeService.getLikeActive(filmId);
-    this.likeDislikeService.setLikeActive(filmId, !currentLikeActive);
+    const currentLikeActive = this.likeDislikeService.buscarLikeAtivo(filmId);
+    const currentDislikeActive = this.likeDislikeService.buscarDeslikeAtivo(filmId);
+
+    if (!currentLikeActive && !currentDislikeActive) {
+      this.likeDislikeService.ativarLike(filmId, true);
+    } else if (currentLikeActive && !currentDislikeActive) {
+      this.likeDislikeService.ativarLike(filmId, false);
+    } else if (!currentLikeActive && currentDislikeActive) {
+      this.likeDislikeService.ativarLike(filmId, true);
+      this.likeDislikeService.ativarDeslike(filmId, false);
+    }
   }
 
-  toggleDislike(event: Event, filmId: number) {
+  botaoDislike(event: Event, filmId: number) {
     event.stopPropagation();
-    const currentDislikeActive = this.likeDislikeService.getDislikeActive(filmId);
-    this.likeDislikeService.setDislikeActive(filmId, !currentDislikeActive);
+    const currentLikeActive = this.likeDislikeService.buscarLikeAtivo(filmId);
+    const currentDislikeActive = this.likeDislikeService.buscarDeslikeAtivo(filmId);
+
+    if (!currentLikeActive && !currentDislikeActive) {
+      this.likeDislikeService.ativarDeslike(filmId, true);
+    } else if (!currentLikeActive && currentDislikeActive) {
+      this.likeDislikeService.ativarDeslike(filmId, false);
+    } else if (currentLikeActive && !currentDislikeActive) {
+      this.likeDislikeService.ativarDeslike(filmId, true);
+      this.likeDislikeService.ativarLike(filmId, false);
+    }
   }
 }

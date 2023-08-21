@@ -9,20 +9,35 @@
         />
       </div>
       <div class="col-md-8">
-        <h2 class="mb-0">{{ descricao.title }} ({{ descricao.year }})</h2>
-        <p class="mb-2 lead-tag">{{ descricao.tagline }}</p>
-        <h4 class="mb-1">Sinopse</h4>
-        <p class="lead">{{ descricao.overview }}</p>
-        <hr class="my-4" />
-        <p class="mb-1">
-          <strong>Data de Lançamento:</strong> {{ descricao.release_date }}
-        </p>
-        <p><strong>Gêneros:</strong> {{ buscarGeneros(descricao.genres) }}</p>
-        <p><strong>Duração:</strong> {{ converterHoras(descricao.runtime) }}</p>
+        <div class="film-details-right">
+          <h2 class="mb-0">{{ descricao.title }} ({{ descricao.year }})</h2>
+          <div class="user-rating-chart">
+            <div class="outer-ring">
+              <div class="user_score_chart">
+                <div class="fill-bar" [style.--percentage]="descricao.vote_average"></div>
+                <div class="percent">
+                  <span class="icon">{{ formatarPorcentagem(descricao.vote_average) }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="lead"> Avaliação dos usuários </div>
+          </div>
+          <p class="mb-2 lead-tag">{{ descricao.tagline }}</p>
+          <h4 class="mb-1">Sinopse</h4>
+          <p class="lead">{{ descricao.overview }}</p>
+          <p class="mb-1">
+            <strong>Data de Lançamento:</strong> {{ descricao.release_date }}
+          </p>
+          <p><strong>Gêneros:</strong> {{ buscarGeneros(descricao.genres) }}</p>
+          <p class="mb-1 p-duration">
+            <strong>Duração:</strong> {{ converterHoras(descricao.runtime) }}
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
 <app-elenco [filmeId]="descricao.id"></app-elenco>
 <app-criar-comentario [filmeId]="descricao.id"></app-criar-comentario>
 <div class="lista-comentarios-container">

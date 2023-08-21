@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map, mergeMap } from 'rxjs';
-import { Result } from '../componentes/interfaces/IListaFilmes';
-import { Descricao } from '../componentes/interfaces/descricao';
-import { Elenco } from '../componentes/interfaces/IElenco';
+import { Result } from '../../interfaces/IListaFilmes';
+import { Descricao } from '../../interfaces/IDescricao';
+import { Elenco } from '../../interfaces/IElenco';
 
 @Injectable({
   providedIn: 'root',

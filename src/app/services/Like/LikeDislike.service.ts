@@ -7,28 +7,28 @@ export class LikeDislikeService {
 
   constructor() { }
 
-  private setLocalStorageValue(key: string, value: any) {
+  private armazenarValor(key: string, value: any) {
     localStorage.setItem(key, JSON.stringify(value));
   }
 
-  private getLocalStorageValue(key: string): any {
+  private obterValorArmazenado(key: string): any {
     const value = localStorage.getItem(key);
     return value ? JSON.parse(value) : null;
   }
 
-  setLikeActive(filmId: number, value: boolean) {
-    this.setLocalStorageValue(`like-${filmId}`, value);
+  ativarLike(filmId: number, value: boolean) {
+    this.armazenarValor(`like-${filmId}`, value);
   }
 
-  getLikeActive(filmId: number): boolean {
-    return this.getLocalStorageValue(`like-${filmId}`) || false;
+  buscarLikeAtivo(filmId: number): boolean {
+    return this.obterValorArmazenado(`like-${filmId}`) || false;
   }
 
-  setDislikeActive(filmId: number, value: boolean) {
-    this.setLocalStorageValue(`dislike-${filmId}`, value);
+  ativarDeslike(filmId: number, value: boolean) {
+    this.armazenarValor(`dislike-${filmId}`, value);
   }
 
-  getDislikeActive(filmId: number): boolean {
-    return this.getLocalStorageValue(`dislike-${filmId}`) || false;
+  buscarDeslikeAtivo(filmId: number): boolean {
+    return this.obterValorArmazenado(`dislike-${filmId}`) || false;
   }
 }

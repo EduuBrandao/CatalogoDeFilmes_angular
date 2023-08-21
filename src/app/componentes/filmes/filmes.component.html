@@ -24,11 +24,11 @@
                 <h5 class="card-title">{{ filme.title }}</h5>
                 <p class="card-text">Data de Lançamento: {{ filme.release_date }}</p>
                 <div class="d-flex justify-content-between">
-                  <button class="btn btn-outline-primary btn-like" (click)="toggleLike($event, filme.id)">
-                    <i class="bi bi-hand-thumbs-up" [ngClass]="{'active': likeDislikeService.getLikeActive(filme.id)}"></i>
+                  <button class="btn btn-outline-primary btn-like" (click)="botaoLike($event, filme.id)">
+                    <i class="bi bi-hand-thumbs-up" [ngClass]="{'active': likeDislikeService.buscarLikeAtivo(filme.id)}"></i>
                   </button>
-                  <button class="btn btn-outline-danger btn-dislike" (click)="toggleDislike($event, filme.id)">
-                    <i class="bi bi-hand-thumbs-down" [ngClass]="{'active': likeDislikeService.getDislikeActive(filme.id)}"></i>
+                  <button class="btn btn-outline-danger btn-dislike" (click)="botaoDislike($event, filme.id)">
+                    <i class="bi bi-hand-thumbs-down" [ngClass]="{'active': likeDislikeService.buscarDeslikeAtivo(filme.id)}"></i>
                   </button>
                 </div>
               </div>
@@ -38,39 +38,37 @@
     </ng-container>
   </div>
   <div class="text-center my-4">
-    <div class="d-flex align-items-center justify-content-center">
+    <div class="d-flex justify-content-center">
       <nav aria-label="...">
         <ul class="pagination">
           <li class="page-item">
             <button
-              class="page-link-botoes prev-next"
+              class="page-link-botoes prev-next btn btn-sm"
               tabindex="-1"
               aria-disabled="true"
               [class.disabled]="paginaSelecionada === 1"
               (click)="diminuirNumeroPaginas()"
             >
-              Previous
+              Anterior
             </button>
           </li>
-          <li
-            class="page-item"
-            *ngFor="let item of gerarIntervaloPaginas(); let i = index"
-          >
+          <div class="btn-group mx-2">
             <button
-              class="page-link"
+              class="page-link btn btn-sm"
+              *ngFor="let item of gerarIntervaloPaginas(); let i = index"
               [class.active]="paginaSelecionada === item"
               (click)="clicarNumeroPaginas(item)"
             >
               {{ item }}
             </button>
-          </li>
+          </div>
           <li class="page-item">
             <button
-              class="page-link-botoes prev-next"
+              class="page-link-botoes prev-next btn btn-sm"
               [class.disabled]="paginaSelecionada === 100"
               (click)="aumentarNumerodePaginas()"
             >
-              Next
+              Próximo
             </button>
           </li>
         </ul>

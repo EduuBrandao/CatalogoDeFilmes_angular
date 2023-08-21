@@ -1,8 +1,8 @@
 import { Component, Input, ViewChild } from '@angular/core';
-import { Comentario } from '../../interfaces/comentarios';
+import { Comentario } from '../../../interfaces/IComentarios';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ComentarioService } from 'src/app/services/comentario.service';
 import { LoadingComponent } from '../../loading/loading.component';
+import { ComentarioService } from 'src/app/services/comentario/comentario.service';
 
 @Component({
   selector: 'app-lista-comentarios',
