@@ -12,7 +12,6 @@ export class FilmesComponent {
 
   paginaSelecionada: number = 1;
   informacoesFilme: boolean[] = [];
-  listaFilmes: Result[] = [];
   tmdbImageUrlBase = 'https://image.tmdb.org/t/p/w500';
   totalPaginas: number = 100;
   pesquisa: string = '';
@@ -27,8 +26,14 @@ export class FilmesComponent {
     this.atualizarListadeFilmes(this.paginaSelecionada);
   }
 
+  atualizarListadeFilmes(page: number) {
+    this.tmdbService.buscarFilmes(page).subscribe((result) => {
+      this.filmesFiltrados = result;
+    });
+  }
+
   pesquisarFilmes() {
-    this.filmesFiltrados = this.listaFilmes.filter((filme) =>
+    this.filmesFiltrados = this.filmesFiltrados.filter((filme) =>
       filme.title.toLowerCase().includes(this.pesquisa.toLowerCase())
     );
   }
@@ -61,13 +66,6 @@ export class FilmesComponent {
       { length: endPage - startPage + 1 },
       (_, i) => startPage + i
     );
-  }
-
-  atualizarListadeFilmes(page: number) {
-    this.tmdbService.buscarFilmes(page).subscribe((result) => {
-      this.listaFilmes = result;
-      this.filmesFiltrados = result;
-    });
   }
 
   atualizarPaginaSelecionada() {

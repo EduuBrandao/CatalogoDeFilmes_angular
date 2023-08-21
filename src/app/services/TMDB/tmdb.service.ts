@@ -23,10 +23,11 @@ export class TMDBService {
         const apiKey = data.apiKey;
         this.headers = new HttpHeaders({
           Authorization: `Bearer ${apiKey}`,
-          Accept: 'application/json',});
+          Accept: 'application/json',
+        });
         this.api_filmes = data.apiFilmes;
         this.api_descricao = data.apiDescricao;
-        this.api_elenco = data.apiElenco
+        this.api_elenco = data.apiElenco;
       })
     );
   }

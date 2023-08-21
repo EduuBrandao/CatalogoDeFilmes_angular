@@ -30,7 +30,7 @@ export class CriarComentarioComponent {
       keyboard: false,
     });
 
-    this.comentario.fk_id = this.filmeId.toString(); // Atribuir filmeId ao id do comentário
+    this.comentario.fk_id = this.filmeId.toString();
     this.service.criarComentario(this.comentario).subscribe(() => {
       setTimeout(() => {
         loadingModal.close();

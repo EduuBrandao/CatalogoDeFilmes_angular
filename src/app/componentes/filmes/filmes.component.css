@@ -60,7 +60,7 @@
   position: relative;
   width: 100%;
   height: 0;
-  padding-top: 10%; /* Define a proporção da altura em relação à largura */
+  padding-top: 10%;
   background-size: cover;
   background-position: center;
   transition: transform 0.3s;
@@ -83,7 +83,6 @@
   cursor: pointer;
 }
 
-/* Estilos para a navegação */
 .text-center {
   text-align: center;
 }
@@ -164,10 +163,6 @@
   color: #e50914;
 }
 
-/* Estilos para os botões Previous e Next */
-/* ... Seus estilos existentes ... */
-
-/* Estilos para os botões Previous e Next */
 .page-link.prev-next {
   background-color: #000;
   border-radius: 4px;
@@ -186,7 +181,6 @@
   cursor: not-allowed;
 }
 
-/* Estilos para o container dos filmes */
 .film-container {
   display: flex;
   flex-wrap: wrap;
@@ -194,12 +188,11 @@
   align-items: flex-start;
 }
 
-/* Estilos para o cartão de filme */
 .film-card {
   position: relative;
   width: 100%;
   height: 0;
-  padding-bottom: 170%; /* Proporção para ajustar a altura das imagens */
+  padding-bottom: 170%;
   background-size: cover;
   background-position: center;
   cursor: pointer;
@@ -210,7 +203,6 @@
   transform: scale(1.05);
 }
 
-/* Estilos para as informações do filme */
 .film-info {
   position: absolute;
   bottom: 0;
@@ -230,7 +222,7 @@
 h1.text-center.mb-4 {
   font-size: 2rem;
   font-weight: bold;
-  color: #000000; /* Cor do texto */
+  color: #000000;
   margin-bottom: 20px;
 }
 

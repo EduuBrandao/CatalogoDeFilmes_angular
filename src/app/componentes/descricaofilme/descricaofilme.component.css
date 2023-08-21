@@ -18,25 +18,25 @@
 }
 
 .h2 {
-  font-size: 1.5rem; /* Aumentei o tamanho do título */
+  font-size: 1.5rem;
 }
 
 .h4 {
-  font-size: 1.2rem; /* Aumentei o tamanho da sinopse */
+  font-size: 1.2rem;
 }
 
 .lead {
-  font-size: 1.1rem; /* Aumentei o tamanho da lead */
+  font-size: 1.1rem;
   color: #020101;
 }
 
 .lead-tag {
-  font-size: 1.1rem; /* Aumentei o tamanho da lead */
+  font-size: 1.1rem;
   color: #ccc;
 }
 
 .mb-1 {
-  margin-bottom: 0.25rem; /* Espaçamento menor para os itens */
+  margin-bottom: 0.25rem;
 }
 .background-image {
   background-size: cover;
@@ -47,13 +47,12 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-  opacity: 0.5; /* Ajuste a opacidade conforme desejado */
+  opacity: 0.5;
 }
 
 .lista-comentarios-container {
   margin-top: 57px
 }
-/* Resto do seu CSS... */
 
 .user-rating-chart {
   display: flex;
@@ -120,11 +119,10 @@
   align-items: flex-start;
 }
 
-/* Adicione este estilo para ajustar a margem à direita do texto */
 .rating-title {
   margin-left: 10px;
 }
 
 .p-duration {
-  margin-top: -0.80rem; /* Ajuste o valor conforme necessário */
+  margin-top: -0.80rem;
 }

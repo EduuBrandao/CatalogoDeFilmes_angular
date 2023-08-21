@@ -1,4 +1,3 @@
-/* filme-descricao.component.css */
 .film-details-container {
   margin-top: 30px;
 }
@@ -13,7 +12,7 @@
 }
 
 .lista-comentarios-component {
-  margin-top: 300px; /* Ou o valor de margem que você preferir */
+  margin-top: 300px;
 }
 
 .poster-img {
@@ -51,7 +50,6 @@
   margin-top: 10px;
 }
 
-/* lista-comentarios.component.css */
 .film-comments-container {
   margin-top: 30px;
 }
@@ -81,5 +79,5 @@
 }
 
 .modal-backdrop-custom-zindex {
-  z-index: 0; /* Defina um valor de z-index menor que o valor problemático (1055) */
+  z-index: 0;
 }

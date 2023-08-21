@@ -1,12 +1,3 @@
-<link
-  href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
-  rel="stylesheet"
-/>
-<link
-  rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-/>
-
 <div>
   <div class="d-flex justify-content-center mb-3">
     <button
@@ -17,7 +8,6 @@
       Exibir Comentários
     </button>
   </div>
-
   <div
     class="film-comments-container"
     *ngIf="comentariosVisiveis && comentario.length > 0"
@@ -25,7 +15,6 @@
     <div class="d-flex justify-content-center mb-3">
       <h2 class="comment-title">Comentários dos Espectadores</h2>
     </div>
-    <!-- Restante do código -->
     <div class="row">
       <div
         class="col-md-12"
@@ -39,20 +28,14 @@
               <h5 class="comment-username">Usuario: {{ comment.usuario }}</h5>
               <p class="card-text comment-text">{{ comment.comentario }}</p>
             </div>
-
             <div class="d-flex align-items-center">
-              <!-- Div para os ícones -->
               <div style="margin-left: auto">
-                <!-- Alinhar à direita -->
-                <!-- Ícone de edição -->
                 <button
                   class="btn btn-link text-dark me-2"
                   (click)="abrirModalEditar(comment.id)"
                 >
                   <i class="bi bi-pencil"></i>
                 </button>
-
-                <!-- Ícone de lixeira -->
                 <button
                   class="btn btn-link text-dark"
                   (click)="abrirModalExclusao(modalExclusao, comment)"
@@ -63,22 +46,17 @@
             </div>
           </div>
         </div>
-        <!-- Dentro do loop ngFor -->
       </div>
     </div>
-
-    <!-- Botão "Visualizar Mais Comentários" -->
     <button
-      class="btn btn-dark mt-3 me-2"
+      class="btn btn-dark mt-3 me-2 btn-block"
       *ngIf="comentario.length > comentariosExibidos"
       (click)="carregarMaisComentarios()"
     >
       Visualizar Mais Comentários
     </button>
-
-    <!-- Botão "Esconder Comentários" -->
     <button
-      class="btn btn-dark mt-3 me-2 w-25"
+      class="btn btn-dark mt-3 me-2 btn-block"
       (click)="visualizarComentarios(); comentariosExibidos = 5"
       *ngIf="comentario.length > 0 && comentariosVisiveis"
     >
@@ -86,8 +64,6 @@
     </button>
   </div>
 </div>
-
-<!-- Coloque isso fora do loop ngFor -->
 <ng-template #modalExclusao let-modal style="z-index: 0">
   <div class="modal-header modal-custom-zindex">
     <h4 class="modal-title">Confirmar Exclusão</h4>

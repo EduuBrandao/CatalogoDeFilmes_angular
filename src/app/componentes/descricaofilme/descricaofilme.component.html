@@ -14,13 +14,18 @@
           <div class="user-rating-chart">
             <div class="outer-ring">
               <div class="user_score_chart">
-                <div class="fill-bar" [style.--percentage]="descricao.vote_average"></div>
+                <div
+                  class="fill-bar"
+                  [style.--percentage]="descricao.vote_average"
+                ></div>
                 <div class="percent">
-                  <span class="icon">{{ formatarPorcentagem(descricao.vote_average) }}</span>
+                  <span class="icon">{{
+                    formatarPorcentagem(descricao.vote_average)
+                  }}</span>
                 </div>
               </div>
             </div>
-            <div class="lead"> Avaliação dos usuários </div>
+            <div class="lead">Avaliação dos usuários</div>
           </div>
           <p class="mb-2 lead-tag">{{ descricao.tagline }}</p>
           <h4 class="mb-1">Sinopse</h4>
