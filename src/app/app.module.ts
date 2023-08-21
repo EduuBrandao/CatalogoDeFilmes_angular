@@ -7,7 +7,6 @@ import { RodapeComponent } from './componentes/rodape/rodape.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FilmesComponent } from './componentes/filmes/filmes.component';
 import { DescricaofilmeComponent } from './componentes/descricaofilme/descricaofilme.component';
-import { ChunkPipe } from './pipes/chunk.pipe';
 import { DateFnsModule } from 'ngx-date-fns';
 import { DatePipe } from '@angular/common';
 import { ListaComentariosComponent } from './componentes/comentarios/lista-comentarios/lista-comentarios.component';
@@ -30,7 +29,6 @@ import { LikeDislikeService } from './services/like/LikeDislike.service';
     RodapeComponent,
     FilmesComponent,
     DescricaofilmeComponent,
-    ChunkPipe,
     ListaComentariosComponent,
     CriarComentarioComponent,
     LoadingComponent,

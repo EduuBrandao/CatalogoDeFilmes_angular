@@ -16,8 +16,8 @@
   </div>
   <h1 class="text-left mb-4">Lista de Filmes</h1>
   <div class="row film-container">
-    <ng-container *ngFor="let chunk of filmesFiltrados | chunk : 5">
-      <div class="col-md-3 mb-4" *ngFor="let filme of chunk">
+    <ng-container>
+      <div class="col-md-3 mb-4" *ngFor="let filme of filmesFiltrados">
         <div class="card h-100 border-0">
             <div class="film-card" [routerLink]="['/descricao', filme.id]" [style.background-image]="'url(' + (tmdbImageUrlBase + filme.poster_path) + ')'">
               <div class="film-info">

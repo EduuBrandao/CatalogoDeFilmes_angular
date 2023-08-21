@@ -1,18 +1,6 @@
 {
   "comentarios": [
     {
-      "id": 8,
-      "fk_id": "569094",
-      "comentario": "ilme do aranhaaa",
-      "usuario": "Eduardo"
-    },
-    {
-      "id": 13,
-      "fk_id": "569094",
-      "comentario": "eu sou o homem aranha",
-      "usuario": "homem aranha"
-    },
-    {
       "id": 14,
       "fk_id": "597",
       "comentario": "aaaaaaaa",
@@ -23,12 +11,6 @@
       "fk_id": "976573",
       "comentario": "teste",
       "usuario": "teste"
-    },
-    {
-      "id": 18,
-      "fk_id": "569094",
-      "comentario": "filme bom",
-      "usuario": "Edu"
     },
     {
       "id": 19,

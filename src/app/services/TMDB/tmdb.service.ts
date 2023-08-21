@@ -16,7 +16,7 @@ export class TMDBService {
 
   constructor(private http: HttpClient) {}
 
-  private loadTokenFromJson(): Observable<void> {
+  private carregarInformacoesDoJson(): Observable<void> {
     const jsonFileUrl = '../../assets/config.json';
     return this.http.get<any>(jsonFileUrl).pipe(
       map((data) => {
@@ -32,7 +32,7 @@ export class TMDBService {
   }
 
   buscarFilmes(page: number): Observable<Result[]> {
-    return this.loadTokenFromJson().pipe(
+    return this.carregarInformacoesDoJson().pipe(
       mergeMap(() => {
         return this.http.get<{ results: Result[] }>(
           this.api_filmes.replace('${page}', page.toString()),
@@ -44,7 +44,7 @@ export class TMDBService {
   }
 
   buscarDescricaoPorId(id: number): Observable<Descricao> {
-    return this.loadTokenFromJson().pipe(
+    return this.carregarInformacoesDoJson().pipe(
       mergeMap(() => {
         return this.http.get<Descricao>(
           this.api_descricao.replace('${id}', id.toString()),
@@ -55,7 +55,7 @@ export class TMDBService {
   }
 
   buscarElencoPorId(id: number): Observable<Elenco> {
-    return this.loadTokenFromJson().pipe(
+    return this.carregarInformacoesDoJson().pipe(
       mergeMap(() => {
         return this.http.get<Elenco>(
           this.api_elenco.replace('${id}', id.toString()),
