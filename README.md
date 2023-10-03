@@ -1,4 +1,7 @@
-# TesteItau
+# Catalogo De Filmes
+
+Não esqueça de rodar o back-End para poder utilizar comentarios.
+cd backend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.3.
 
