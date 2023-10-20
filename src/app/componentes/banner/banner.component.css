@@ -3,9 +3,12 @@
   height: 450px;
   display: flex;
   align-items: center;
-  position: relative;
 }
-
+img {
+  vertical-align: middle;
+  border-style: none;
+  width: 100%;
+}
 @media (min-width: 768px) {
   .container {
     height: 700px;

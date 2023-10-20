@@ -1,19 +1,22 @@
 <div class="container">
+  <div class="backdrop-img">
+    <img src="../../../assets/imagens/fivee.jpeg" alt="" />
+  </div>
   <div class="opacity-layer"></div>
 
   <div class="content">
-    <span class="title">Bem vindo!</span>
+    <span class="title">Bem vindo.</span>
     <span class="subTitle">
-      Explore milhões de filmes
+      Explore por milhões de filmes
     </span>
     <form (submit)="searchQueryHandler($event)">
       <input
         type="text"
-        placeholder="Pesquise pelo filme"
+        placeholder="Search for a movie or tv show..."
         [(ngModel)]="query"
         name="query"
       />
-      <button type="submit">Pesquisar</button>
+      <button type="submit">Search</button>
     </form>
   </div>
 </div>
