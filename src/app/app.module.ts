@@ -20,7 +20,8 @@ import { LoadingComponent } from './componentes/loading/loading.component';
 import { ElencoComponent } from './componentes/elenco/elenco.component';
 import { TMDBService } from './services/TMDB/tmdb.service';
 import { ComentarioService } from './services/comentario/comentario.service';
-import { LikeDislikeService } from './services/like/LikeDislike.service';
+import { LikeDislikeService } from './services/Like/LikeDislike.service';
+import { BannerComponent } from './componentes/banner/banner.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { LikeDislikeService } from './services/like/LikeDislike.service';
     ListaComentariosComponent,
     CriarComentarioComponent,
     LoadingComponent,
-    ElencoComponent
+    ElencoComponent,
+    BannerComponent
   ],
   imports: [
     BrowserModule,

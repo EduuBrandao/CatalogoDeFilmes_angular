@@ -1,19 +1,6 @@
+<app-banner></app-banner>
 <div class="container mt-5">
-  <div class="search-bar">
-    <div class="input-group">
-      <input
-        type="text"
-        [(ngModel)]="pesquisa"
-        (input)="pesquisarFilmes()"
-        class="form-control"
-        placeholder="Pesquisar filmes"
-      />
-      <div class="input-group-append">
-        <span class="input-group-text"><i class="bi bi-search"></i></span>
-      </div>
-    </div>
-  </div>
-  <h1 class="text-left mb-4">Lista de Filmes</h1>
+  <h1 class="text-left mb-4">Filmes populares</h1>
   <div class="row film-container">
     <ng-container>
       <div class="col-md-3 mb-4" *ngFor="let filme of filmesFiltrados">

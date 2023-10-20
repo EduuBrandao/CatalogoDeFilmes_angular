@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 import { Result } from '../../interfaces/IListaFilmes';
 import { TMDBService } from 'src/app/services/TMDB/tmdb.service';
-import { LikeDislikeService } from 'src/app/services/like/LikeDislike.service';
+import { LikeDislikeService } from 'src/app/services/Like/LikeDislike.service';
 
 @Component({
   selector: 'app-filmes',
@@ -9,7 +9,6 @@ import { LikeDislikeService } from 'src/app/services/like/LikeDislike.service';
   styleUrls: ['./filmes.component.css'],
 })
 export class FilmesComponent {
-
   paginaSelecionada: number = 1;
   informacoesFilme: boolean[] = [];
   tmdbImageUrlBase = 'https://image.tmdb.org/t/p/w500';

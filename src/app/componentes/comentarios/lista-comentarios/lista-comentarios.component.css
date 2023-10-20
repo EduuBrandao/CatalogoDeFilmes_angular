@@ -81,3 +81,11 @@
 .modal-backdrop-custom-zindex {
   z-index: 0;
 }
+
+.btn-lg {
+  background-color: #000000;
+}
+
+.btn-block {
+  background-color: #000000;
+}

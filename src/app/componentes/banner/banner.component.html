@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="opacity-layer"></div>
+
+  <div class="content">
+    <span class="title">Bem vindo!</span>
+    <span class="subTitle">
+      Explore milhões de filmes
+    </span>
+    <form (submit)="searchQueryHandler($event)">
+      <input
+        type="text"
+        placeholder="Pesquise pelo filme"
+        [(ngModel)]="query"
+        name="query"
+      />
+      <button type="submit">Pesquisar</button>
+    </form>
+  </div>
+</div>

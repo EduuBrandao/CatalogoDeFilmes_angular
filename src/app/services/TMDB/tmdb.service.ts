@@ -12,6 +12,7 @@ export class TMDBService {
   api_filmes = '';
   api_descricao = '';
   api_elenco = '';
+  api_pesquisa = '';
   headers = new HttpHeaders({});
 
   constructor(private http: HttpClient) {}
@@ -28,6 +29,7 @@ export class TMDBService {
         this.api_filmes = data.apiFilmes;
         this.api_descricao = data.apiDescricao;
         this.api_elenco = data.apiElenco;
+        this.api_pesquisa = data.apiPesquisa;
       })
     );
   }
@@ -60,6 +62,17 @@ export class TMDBService {
       mergeMap(() => {
         return this.http.get<Elenco>(
           this.api_elenco.replace('${id}', id.toString()),
+          { headers: this.headers }
+        );
+      })
+    );
+  }
+
+  buscarFilmePorDigitacao(palavra: string): Observable<Elenco> {
+    return this.carregarInformacoesDoJson().pipe(
+      mergeMap(() => {
+        return this.http.get<Elenco>(
+          this.api_elenco.replace('${palavra}', palavra),
           { headers: this.headers }
         );
       })
